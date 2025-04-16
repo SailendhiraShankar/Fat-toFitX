@@ -1,0 +1,147 @@
+                                                                                   Flowchart
+Start
+
+Enter Gender
+|
+V
+Is Gender Male?
+|
+|------ No ------|
+|                |
+|                V
+|            Enter Weight
+|                |
+|                V
+|            Enter BFP
+|                |
+|                V
+|          Calculate FFMW, Target_weight, Aim
+|                |
+|                V
+|         Is BFP > 15?
+|         |------ No ------|
+|         |                |
+|         |                V
+|         |           Display "Proper BFP good"
+|         |                |
+|         |                V
+|         |             End
+|         |
+|         |------ Yes -----|
+|                          |
+|                          V
+|                 Calculate Phase 1
+|                          |
+|                          V
+|               Is BFP >= 16 && BFP <= 24?
+|               |------ Yes ------|    |------ No ------|
+|               |                |    |                |
+|               |                V    |                V
+|               |           Calculate Weeks   Display "Your body fat percentage is in the optimal range."
+|               |                |    |                |
+|               |                |    |                V
+|               |                |    |              End
+|               |                |
+|               |                V
+|               |             End
+|
+|------ Yes -------|
+|                  |
+|                  V
+|              Calculate Phase 2
+|                  |
+|                  V
+|        Is BFP >= 16 && BFP <= 20?
+|        |------ Yes ------|    |------ No ------|
+|        |                |    |                |
+|        |                V    |                V
+|        |           Calculate Weeks   Display "Your body fat percentage is in the optimal range."
+|        |                |    |                |
+|        |                |    |                V
+|        |                |    |              End
+|        |
+|        |------ No -------|
+|                          |
+|                          V
+|                 Calculate Phase 3
+|                          |
+|                          V
+|               Is BFP > 15?
+|               |------ Yes ------|    |------ No ------|
+|               |                |    |                |
+|               |                V    |                V
+|               |           Calculate Weeks   Display "you have already reached the goal."
+|               |                |    |                |
+|               |                |    |                V
+|               |                |    |              End
+|               |
+|               |------ No -------|
+|                              |
+|                              V
+|                         End
+|
+|------ No ---------|
+|                    |
+|                    V
+|            Is Gender Female?
+|            |------ No ------|
+|            |                |
+|            |                V
+|            |           Display "Your body fat percentage is in the optimal range."
+|            |                |
+|            |                V
+|            |              End
+|            |
+|            |------ Yes -----|
+|                            |
+|                            V
+|                   Calculate Phase 1
+|                            |
+|                            V
+|                 Is BFP >= 24 && BFP <= 30?
+|                 |------ Yes ------|    |------ No ------|
+|                 |                |    |                |
+|                 |                V    |                V
+|                 |           Calculate Weeks   Display "Your body fat percentage is in the optimal range."
+|                 |                |    |                |
+|                 |                |    |                V
+|                 |                |    |              End
+|                 |
+|                 |------ No -------|
+|                                    |
+|                                    V
+|                           Calculate Phase 2
+|                                    |
+|                                    V
+|                 Is BFP >= 24 && BFP <= 28?
+|                 |------ Yes ------|    |------ No ------|
+|                 |                |    |                |
+|                 |                V    |                V
+|                 |           Calculate Weeks   Display "Your body fat percentage is in the optimal range."
+|                 |                |    |                |
+|                 |                |    |                V
+|                 |                |    |              End
+|                 |
+|                 |------ No -------|
+|                                    |
+|                                    V
+|                           Calculate Phase 3
+|                                    |
+|                                    V
+|                  Is BFP > 23?
+|                  |------ Yes ------|    |------ No ------|
+|                  |                |    |                |
+|                  |                V    |                V
+|                  |           Calculate Weeks   Display "you have already reached the goal."
+|                  |                |    |                |
+|                  |                |    |                V
+|                  |                |    |              End
+|                  |
+|                  |------ No -------|
+|                                    |
+|                                    V
+|                           End
+|
+|------ End -------|
+|                  |
+V                  V
