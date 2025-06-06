@@ -3,166 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Journey Planner</title>
+    <title>Fitness Journey Planner | For Individuals Over 80kg</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      :root {
-          --primary-bg: #1a1a1a;
-          --secondary-bg: #2d2d2d;
-          --accent: #4a90e2;
-          --text-primary: #f8f9fa;
-          --text-secondary: #dee2e6;
-          --border: #3a3a3a;
-      }
+        :root {
+            --primary: #2c3e50;
+            --primary-light: #3d5a80;
+            --secondary: #42b883;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --card-bg: #ffffff;
+            --border: #dee2e6;
+        }
 
-      body {
-          background: var(--primary-bg);
-          color: var(--text-primary);
-          min-height: 100vh;
-          font-family: 'Segoe UI', system-ui, sans-serif;
-          line-height: 1.6;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      .navbar {
-          background: var(--secondary-bg);
-          border-bottom: 1px solid var(--border);
-      }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-      .card {
-          background: var(--secondary-bg);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-          transition: transform 0.2s ease;
-      }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary);
+        }
 
-      .card:hover {
-          transform: translateY(-3px);
-      }
+        .navbar {
+            background: var(--primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-      .form-control, .form-select {
-          background: #333;
-          border: 1px solid #4a4a4a;
-          color: var(--text-primary);
-          transition: all 0.2s ease;
-      }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
 
-      .form-control:focus {
-          background: #404040;
-          border-color: var(--accent);
-          box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
-      }
+        .logo-icon {
+            color: var(--secondary);
+        }
 
-      .btn-primary {
-          background: var(--accent);
-          border: none;
-          padding: 0.75rem 1.5rem;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-      }
+        .hero-section {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-      .btn-primary:hover {
-          background: #357abd;
-      }
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
 
-      .progress-bar {
-          background: #333;
-          height: 12px;
-          border-radius: 6px;
-      }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
 
-      .progress-fill {
-          background: linear-gradient(90deg, #4a90e2, #5ba8ff);
-          transition: width 0.5s ease;
-      }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
 
-      .phase-header {
-          background: #333;
-          padding: 1.25rem;
-          border-radius: 12px 12px 0 0;
-      }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
 
-      .calculation-box {
-          background: #363636;
-          border-radius: 8px;
-          padding: 1.25rem;
-          margin: 1.25rem 0;
-          border: 1px solid #404040;
-      }
+        .card-header {
+            background: var(--primary-light);
+            color: white;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
 
-      .step-item {
-          background: #3a3a3a;
-          border-left: 3px solid var(--accent);
-          padding: 1rem;
-          margin: 0.75rem 0;
-          transition: all 0.2s ease;
-          cursor: pointer;
-      }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-      .step-item:hover {
-          background: #404040;
-          transform: translateX(5px);
-      }
+        .card-icon {
+            color: var(--secondary);
+        }
 
-      .modal-content {
-          background: var(--secondary-bg);
-          border: 1px solid var(--border);
-      }
+        .card-body {
+            padding: 2rem;
+        }
 
-      .alert {
-          background: #2a2a2a;
-          border: 1px solid #3a3a3a;
-      }
+        .form-control, .form-select {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--dark);
+            padding: 0.9rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
 
-      .text-muted {
-          color: #9a9a9a !important;
-      }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.1);
+            outline: none;
+        }
 
-      .alert-success {
-    background: #0d300d !important;
-    border-color: #1c5c1c !important;
-    color: #c3e6cb !important;
-    border-left: 4px solid #28a745 !important;
-}
+        .btn {
+            border-radius: 8px;
+            padding: 0.9rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-.alert-success h5 {
-    color: #96f2a9 !important;
-    margin-bottom: 1rem;
-}
-      @media (max-width: 768px) {
-          .card {
-              margin: 0.5rem;
-              border-radius: 8px;
-          }
-          
-          .calculation-box {
-              padding: 1rem;
-          }
-          
-          .step-item {
-              padding: 0.75rem;
-          }
-      }
-  </style>
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--primary-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .info-list {
+            padding-left: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .progress-container {
+            background: var(--light-gray);
+            border-radius: 10px;
+            height: 16px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-light), var(--secondary));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .phase-card {
+            margin-bottom: 2rem;
+            border-top: 3px solid var(--primary-light);
+        }
+
+        .phase-header {
+            background: #f1f8ff;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .phase-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .phase-icon {
+            color: var(--primary-light);
+        }
+
+        .phase-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .calculation-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .calculation-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+        }
+
+        .calculation-icon {
+            color: var(--secondary);
+        }
+
+        .step-item {
+            background: white;
+            border-left: 3px solid var(--secondary);
+            padding: 1.2rem;
+            margin: 0.8rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-item:hover {
+            background: #f8fdff;
+            transform: translateX(3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-icon {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .summary-card {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.2rem;
+        }
+
+        .summary-icon {
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+
+        .summary-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .card-body {
+                padding: 1.5rem;
+            }
+            
+            .btn-lg {
+                padding: 0.9rem 1.8rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Fitness Journey</a>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo">
+                    <i class="fas fa-dumbbell logo-icon"></i>
+                    <span>FitnessJourney</span>
+                </div>
+            </a>
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Fitness Journey Planner using BFP</h1>
+            <p class="hero-subtitle">Designed for individuals over 80kg to achieve sustainable health and fitness goals</p>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+            <div class="col-lg-8">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i class="fas fa-running card-icon"></i>
+                            Begin Your Transformation
+                        </h2>
+                    </div>
                     <div class="card-body">
-                        <h2 class="text-center mb-4">Start Your Journey</h2>
+                        <div class="info-box">
+                            <div class="info-header">
+                                <i class="fas fa-info-circle fa-lg"></i>
+                                <h5>About This Tool</h5>
+                            </div>
+                            <ul class="info-list">
+                                <li>This planner is optimized for individuals weighing <strong>80kg or above</strong></li>
+                                <li>Our methodology is designed for <strong>sustainable fat loss</strong> over time</li>
+                                <li>Plans are tailored based on your body composition data</li>
+                                <li>We recommend consulting with a healthcare professional before starting any new fitness program</li>
+                            </ul>
+                        </div>
+                        
                         <form id="userForm">
-                            <div class="mb-3">
+                            <div class="mb-4">
+                                <label for="username" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="username" placeholder="Enter your name" required>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg">Begin</button>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-play me-2"></i>Start Your Journey
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -170,35 +438,86 @@
         </div>
     </div>
 
-    <div id="calculatorSection" class="container mt-5 d-none">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <h2>How It Works</h2>
+                <p class="text-muted">Our proven 3-phase approach to sustainable fitness</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Foundation Phase</h4>
+                    <p class="mt-3">Establish healthy habits and nutrition fundamentals to prepare your body for transformation.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Progress Phase</h4>
+                    <p class="mt-3">Implement structured training and nutrition tracking to build momentum toward your goals.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4>Transformation Phase</h4>
+                    <p class="mt-3">Fine-tune your approach with advanced techniques to achieve your final targets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="calculatorSection" class="container mt-4 d-none">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+            <div class="col-lg-8">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i class="fas fa-calculator card-icon"></i>
+                            Create Your Plan, <span id="userNameDisplay"></span>
+                        </h2>
+                    </div>
                     <div class="card-body">
-                        <h2 class="text-center mb-4">Hello <span id="userNameDisplay"></span>!</h2>
                         <form id="calcForm">
-                            <div class="row g-3">
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender</label>
                                     <select class="form-select" id="gender" required>
+                                        <option value="">Select Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" id="weight" placeholder="Weight (kg)" step="0.1" required>
+                                    <label for="weight" class="form-label">Current Weight (kg)</label>
+                                    <input type="number" class="form-control" id="weight" placeholder="e.g. 85" step="0.1" min="80" required>
+                                    <div class="form-text text-end">Must be 80kg or above</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" id="bfp" placeholder="Body Fat %" step="0.1" required>
+                                    <label for="bfp" class="form-label">Body Fat Percentage</label>
+                                    <input type="number" class="form-control" id="bfp" placeholder="e.g. 28" step="0.1" min="10" max="50" required>
                                 </div>
                             </div>
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Calculate Plan</button>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-calculator me-2"></i>Calculate My Plan
+                                </button>
                             </div>
                         </form>
 
                         <div id="results" class="mt-5 d-none">
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progress"></div>
+                            <h4 class="mb-3">Your Personalized Fitness Roadmap</h4>
+                            <div class="progress-container">
+                                <div class="progress-bar" id="progress"></div>
                             </div>
                             <div id="planDetails"></div>
                         </div>
@@ -212,7 +531,10 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Phase Details</h5>
+                    <h5 class="modal-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <span id="modalTitle">Phase Details</span>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="modalContent">
@@ -220,6 +542,14 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>FitnessJourney Planner &copy; 2023 | Designed specifically for individuals over 80kg</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -230,8 +560,14 @@
             username = document.getElementById('username').value.trim();
             if (username) {
                 document.querySelector('.container').classList.add('d-none');
-                document.getElementById('calculatorSection').classList.remove('d-none');
+                const calcSection = document.getElementById('calculatorSection');
+                calcSection.classList.remove('d-none');
                 document.getElementById('userNameDisplay').textContent = username;
+                
+                // Add animation
+                setTimeout(() => {
+                    calcSection.classList.add('fade-in');
+                }, 50);
             }
         });
 
@@ -242,10 +578,16 @@
             const weight = parseFloat(document.getElementById('weight').value);
             const bfp = parseFloat(document.getElementById('bfp').value);
             
+            // Validate weight
+            if (weight < 80) {
+                alert("This tool is designed for individuals weighing 80kg or above.");
+                return;
+            }
+            
             let stand = gender === 'male' ? 0.85 : 0.77;
             let targetBFP = gender === 'male' ? 15 : 23;
-            let ffmw = weight - bfp;
-            let targetWeight = ffmw / stand;
+            let ffmw = weight * (1 - bfp/100);
+            let targetWeight = ffmw / (1 - targetBFP/100);
             let aim = weight - targetWeight;
             let bfpToReduce = Math.max(0, bfp - targetBFP);
             
@@ -253,11 +595,11 @@
             
             if (bfpToReduce > 0 && weight >= 80) {
                 // Phase 1
-                const p1Per = bfpToReduce / 2;
+                const p1Per = bfpToReduce * 0.5;
                 const p1TargetPer = bfp - p1Per;
                 const p1Weight = ffmw / (1 - p1TargetPer/100);
                 const phase1 = {
-                    name: 'Phase 1',
+                    name: 'Foundation Phase',
                     start: weight,
                     end: p1Weight,
                     loss: weight - p1Weight,
@@ -265,20 +607,21 @@
                     rate: gender === 'male' ? (bfp >= 16 && bfp <= 24 ? 0.8 : 1) 
                                            : (bfp >= 24 && bfp <= 30 ? 0.8 : 1),
                     details: [
-                        "Stop eating ultra-processed foods",
-                        "Avoid hotel foods and delivery apps",
-                        "Increase protein & vegetable intake",
-                        "40-60 min walks + 3 workouts/week"
+                        "Eliminate ultra-processed foods and sugary drinks",
+                        "Establish consistent meal timing (3 main meals, 1-2 snacks)",
+                        "Begin daily walking routine (40-60 minutes)",
+                        "Start basic bodyweight exercises 3 times/week",
+                        "Focus on hydration (3-4 liters daily)"
                     ]
                 };
                 phases.push(phase1);
 
                 // Phase 2
-                const p2Per = p1Per / 2;
+                const p2Per = p1Per * 0.5;
                 const p2TargetPer = p1TargetPer - p2Per;
                 const p2Weight = ffmw / (1 - p2TargetPer/100);
                 const phase2 = {
-                    name: 'Phase 2',
+                    name: 'Progress Phase',
                     start: p1Weight,
                     end: p2Weight,
                     loss: p1Weight - p2Weight,
@@ -286,30 +629,33 @@
                     rate: gender === 'male' ? (bfp >= 16 && bfp <= 20 ? 0.5 : 0.75) 
                                            : (bfp >= 24 && bfp <= 28 ? 0.5 : 0.75),
                     details: [
-                        "Track daily weight & nutrition",
-                        "Use fitness apps for monitoring",
-                        "1.6x body weight protein intake",
-                        "3x weekly strength training"
+                        "Track daily nutrition using a food diary or app",
+                        "Increase protein intake to 1.6g per kg of body weight",
+                        "Implement structured strength training 3 times/week",
+                        "Add interval training 1-2 times/week",
+                        "Prioritize sleep (7-8 hours per night)"
                     ]
                 };
                 phases.push(phase2);
 
                 // Phase 3
-                const p3Per = p2Per / 2;
+                const p3Per = p2Per * 0.5;
                 const p3TargetPer = p2TargetPer - p3Per;
                 const p3Weight = ffmw / (1 - p3TargetPer/100);
                 if (p2Weight > p3Weight) {
                     const phase3 = {
-                        name: 'Phase 3',
+                        name: 'Transformation Phase',
                         start: p2Weight,
                         end: p3Weight,
                         loss: p2Weight - p3Weight,
                         weeks: calculateWeeks(gender, bfp, p2Weight, p3Weight, 3),
                         rate: 0.5,
                         details: [
-                            "Push-Pull-Legs split training",
-                            "Strict diet adherence",
-                            "Weekly progress tracking"
+                            "Implement Push-Pull-Legs split training program",
+                            "Fine-tune macronutrient ratios for your body",
+                            "Incorporate advanced recovery techniques",
+                            "Practice mindful eating and stress management",
+                            "Monthly progress assessments and adjustments"
                         ]
                     };
                     phases.push(phase3);
@@ -350,7 +696,17 @@
             progress.style.width = '0%';
             
             if (phases.length === 0) {
-                planDetails.innerHTML = `<div class="alert alert-info">Your body composition is already optimal!</div>`;
+                planDetails.innerHTML = `
+                    <div class="alert alert-success mt-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle me-3 fs-4"></i>
+                            <div>
+                                <h5>You're already at a healthy body composition!</h5>
+                                <p class="mb-0">Maintain your current habits with a focus on strength and cardiovascular fitness.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 return;
             }
 
@@ -359,27 +715,60 @@
                 totalWeeks += phase.weeks;
                 
                 planDetails.innerHTML += `
-                    <div class="card mt-4">
-                        <div class="phase-header bg-primary text-white">
-                            <h4>${phase.name}</h4>
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <h4 class="phase-title">
+                                <i class="fas fa-layer-group phase-icon"></i>
+                                ${phase.name}
+                            </h4>
+                            <span class="phase-badge">${phase.weeks} weeks</span>
                         </div>
                         <div class="card-body">
-                            <div class="calculation-box">
-                                <h5>Target Range</h5>
-                                <p>${phase.start.toFixed(1)}kg → ${phase.end.toFixed(1)}kg</p>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="calculation-box">
+                                        <h5 class="calculation-title">
+                                            <i class="fas fa-weight calculation-icon"></i>
+                                            Weight Target
+                                        </h5>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Starting:</span>
+                                            <strong>${phase.start.toFixed(1)}kg</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Target:</span>
+                                            <strong>${phase.end.toFixed(1)}kg</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="calculation-box">
+                                        <h5 class="calculation-title">
+                                            <i class="fas fa-bullseye calculation-icon"></i>
+                                            Progress Metrics
+                                        </h5>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Fat Loss:</span>
+                                            <strong>${phase.loss.toFixed(1)}kg</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Weekly Rate:</span>
+                                            <strong>${phase.rate.toFixed(1)}kg/week</strong>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="calculation-box">
-                                <h5>Weight Loss</h5>
-                                <p>${phase.loss.toFixed(1)}kg over ${phase.weeks} weeks</p>
-                                <p>Rate: ${phase.rate.toFixed(1)}kg/week</p>
-                            </div>
-                            
-                            <div class="calculation-box">
-                                <h5>Action Steps</h5>
-                                ${phase.details.map(step => `
-                                    <div class="step-item mb-2" data-bs-toggle="modal" data-bs-target="#phaseModal" onclick="showDetails('${phase.name}', '${step}')">
-                                        <strong>→</strong> ${step}
+                                <h5 class="calculation-title">
+                                    <i class="fas fa-tasks calculation-icon"></i>
+                                    Action Plan
+                                </h5>
+                                ${phase.details.map((step, index) => `
+                                    <div class="step-item" data-bs-toggle="modal" data-bs-target="#phaseModal" 
+                                        onclick="showDetails('${phase.name}', '${step}', ${index + 1})">
+                                        <i class="fas fa-circle-notch step-icon"></i>
+                                        <div>${step}</div>
                                     </div>
                                 `).join('')}
                             </div>
@@ -391,31 +780,61 @@
             // Progress bar animation
             setTimeout(() => {
                 progress.style.width = `${(totalWeeks / 26 * 100).toFixed(0)}%`;
-            }, 100);
+            }, 300);
 
             planDetails.innerHTML += `
-    <div class="alert alert-success mt-4">
-        <div class="d-flex align-items-center mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-            </svg>
-            <h5 class="mb-0">Plan Summary</h5>
-        </div>
-        <div class="ps-4">
-            <p class="mb-1">Total Duration: <strong>${totalWeeks} weeks</strong></p>
-            <p class="mb-1">Final Target: <strong>${targetWeight.toFixed(1)}kg</strong></p>
-            <p class="mb-0">Fat Reduction: <strong>${bfpToReduce.toFixed(1)}%</strong></p>
-        </div>
-    </div>
-`;
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <i class="fas fa-clipboard-check summary-icon"></i>
+                        <h4 class="summary-title">Journey Summary</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex flex-column align-items-center">
+                                <div class="fs-1 fw-bold">${totalWeeks}</div>
+                                <div class="text-center">Total Weeks</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex flex-column align-items-center">
+                                <div class="fs-1 fw-bold">${targetWeight.toFixed(1)}</div>
+                                <div class="text-center">Target Weight (kg)</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex flex-column align-items-center">
+                                <div class="fs-1 fw-bold">${bfpToReduce.toFixed(1)}%</div>
+                                <div class="text-center">Fat Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        function showDetails(phaseName, step) {
+        function showDetails(phaseName, step, stepNumber) {
+            document.getElementById('modalTitle').textContent = `${phaseName} - Step ${stepNumber}`;
             const content = `
-                <h5>${phaseName}</h5>
-                <p><strong>Step:</strong> ${step}</p>
-                <p>Click outside to close</p>
+                <div class="alert alert-primary">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    Focus on consistency rather than perfection during this phase.
+                </div>
+                <h5>Action Step:</h5>
+                <p class="lead mb-4">${step}</p>
+                
+                <h5>Implementation Tips:</h5>
+                <ul class="mb-4">
+                    <li>Start with small, manageable changes to build momentum</li>
+                    <li>Track your progress weekly to stay motivated</li>
+                    <li>Adjust based on your body's response and energy levels</li>
+                    <li>Celebrate small victories along the way</li>
+                </ul>
+                
+                <div class="d-grid">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-2"></i>Got It!
+                    </button>
+                </div>
             `;
             document.getElementById('modalContent').innerHTML = content;
         }
